@@ -30,8 +30,10 @@ public class HelloRestController {
         return helloList;
     }
     
+    /*
 	@RequestMapping("/")
 	public String index() {
 		return "helloworld!";
 	}
+	*/
 }
