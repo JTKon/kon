@@ -100,8 +100,9 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
+    <!-- If you need to support older browsers like Internet Explorer 6-8, Opera 12.1x or Safari 5.1+, use jQuery 1.12. -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="http://static.devpage.net/blog.devpage.net/bootstrap/js/bootstrap.min.js"></script>
-	
+	<script src="http://static.devpage.net/blog.devpage.net/js/common.js"></script>
   </body>
 </html>
