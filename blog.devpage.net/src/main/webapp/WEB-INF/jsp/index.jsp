@@ -11,7 +11,7 @@
     <meta name="author" content="kon">
     <link rel="icon" href="http://static.devpage.net/favicon.ico">
 
-    <title>Blog for Devpage.net</title>
+    <title>Blog for Devpage&#8226;net</title>
 
     <!-- Bootstrap core CSS -->
     <link href="http://static.devpage.net/blog.devpage.net/bootstrap/css/bootstrap.min.css" rel="stylesheet">
