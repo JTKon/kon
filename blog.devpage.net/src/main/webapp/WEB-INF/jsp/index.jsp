@@ -37,7 +37,7 @@
     <div class="container">
 
       <div class="blog-header">
-        <h1 class="blog-title">Blog&#46;Devpage&#46;Net</h1>
+        <h1 class="blog-title">Devpage.Net Blog</h1>
         <p class="lead blog-description">안녕하신가! 힘세고 강한 아침, 만일 내게 물어보면 나는 kon.</p>
       </div>
 
