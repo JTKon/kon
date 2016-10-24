@@ -11,7 +11,7 @@
     <meta name="author" content="kon">
     <link rel="icon" href="http://static.devpage.net/favicon.ico">
 
-    <title>Blog for Devpage&#8226;net</title>
+    <title>Blog for Devpage.net</title>
 
     <!-- Bootstrap core CSS -->
     <link href="http://static.devpage.net/blog.devpage.net/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -37,7 +37,7 @@
     <div class="container">
 
       <div class="blog-header">
-        <h1 class="blog-title">Blog.Devpage.Net</h1>
+        <h1 class="blog-title">Blog&#46;Devpage&#46;Net</h1>
         <p class="lead blog-description">안녕하신가! 힘세고 강한 아침, 만일 내게 물어보면 나는 kon.</p>
       </div>
 
