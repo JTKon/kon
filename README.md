@@ -22,6 +22,6 @@ devpage.net은 현재 아래와 같이 구축 되어 있습니다.
 * auth.devpage.net을 node.js로 개발하여 인증 시스템이 구축
 * blog.devpage.net의 CRUD을 구현 할 예정입니다.(인증된 인원에 한해 CUD가능)
 
-소스는 도메인별 디렉토리로 구분되어 https://github.com/JTKon/kon에서 보실 수 있습니다.
+소스는 도메인별 디렉토리로 구분되어 https://github.com/JTKon/kon 에서 보실 수 있습니다.
 
 감사합니다.
