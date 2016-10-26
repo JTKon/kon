@@ -1,0 +1,10 @@
+{
+  "name": "devpage.net",
+  "version": "0.0.1",
+  "description": "api-gateway for devpage.net",
+  "main": "app.js",
+  "author": "kon",
+  "dependencies": {
+    "express": "^4.14.0"
+  }
+}
