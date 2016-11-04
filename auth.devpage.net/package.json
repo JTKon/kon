@@ -1,0 +1,14 @@
+{
+  "name": "auth.devpage.net",
+  "version": "0.0.1",
+  "description": "auth for devpage.net",
+  "main": "auth.devpage.net.js",
+  "author": "kon",
+  "dependencies": {
+    "JSON": "^1.0.0",
+    "bcrypt-nodejs": "0.0.3",
+    "express": "^4.14.0",
+    "mongoose": "^4.6.5",
+    "redis": "^2.6.3"
+  }
+}
