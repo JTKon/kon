@@ -37,7 +37,7 @@ app.get('/test', function(req, res){
 	res.send('auth.devpage.net ...');
 });
 
-app.get('/add/kon', function(req, res){
+app.get('/add/kon', function(req, res, next){
 	var account = new Account({id:'kon'});
 	bcrypt.hash('kon123$', null, null, function(err, hash){
 	   account.pw = hash;
