@@ -1,9 +1,7 @@
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/devpage');
 
-var account = mongoose.Schema({
-    id : String,
-    pw : String
+mongoose.connect('mongodb://localhost/devpage', function(){
+    console.log('mongodb connected....');
 });
 
-module.exports = mongoose.model('Account', account);
+module.exports = mongoose;

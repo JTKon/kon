@@ -5,6 +5,7 @@ var http = require('http');
 var app = express();
 var Accout = require('./models/account');
 var bcrypt = require('bcrypt-nodejs');
+var jwt = require('jwt-simple');
 
 var secretKey = 'ommanipadmehum';
 
