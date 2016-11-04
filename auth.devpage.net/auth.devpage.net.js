@@ -3,7 +3,7 @@ var http = require('http');
 var app = express();
 
 app.get('/test', function(req, res){
-	res.send('auth.devpage.net 7010...');
+	res.send('auth.devpage.net ...');
 });
 
 app.listen('7010');
