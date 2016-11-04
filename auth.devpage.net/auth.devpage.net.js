@@ -38,7 +38,7 @@ app.get('/test', function(req, res){
 });
 
 app.get('/add/kon', function(req, res, next){
-	var account = new Account({id:'kon'});
+	var account = new Account({id:'kon', role:'admin'});
 	bcrypt.hash('kon123$', null, null, function(err, hash){
 	   account.pw = hash;
 	   account.save(function(err, account){
