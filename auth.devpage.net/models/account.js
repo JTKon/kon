@@ -1,4 +1,4 @@
-var db = require(../mongoDB);
+var db = require('../mongoDB');
 
 var account = db.model('account', {
     id : {type: String, required: true},
