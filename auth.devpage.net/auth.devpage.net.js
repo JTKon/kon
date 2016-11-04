@@ -37,6 +37,8 @@ app.get('/test', function(req, res){
 	res.send('auth.devpage.net ...');
 });
 
+/* 
+//user add test
 app.get('/add/kon', function(req, res, next){
 	var account = new Account({id:'kon', role:'admin'});
 	bcrypt.hash('kon123$', null, null, function(err, hash){
@@ -49,6 +51,7 @@ app.get('/add/kon', function(req, res, next){
 	   });
 	});
 });
+*/
 
 
 app.listen('7010');
