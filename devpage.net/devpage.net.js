@@ -46,16 +46,16 @@ function gateway(req, res, httpMethod){
 				path: req.url
 			};
 			
-			internalRequest(req, res, httpMethod, option);
+			internalRequest(req, res, httpMethod, options);
 
-		}else if(host == auth.devpage.net){
+		}else if(host == domainAuth){
 			var options = {
 				host: '127.0.0.1',
 				port: '7010',
 				path: req.url
 			};
 			
-			internalRequest(req, res, httpMethod, option);
+			internalRequest(req, res, httpMethod, options);
 
 		}else{
 			console.log('no matchig host : '+ host);
@@ -68,7 +68,7 @@ function gateway(req, res, httpMethod){
 	}
 }
 
-function internalRequest(req, res, httpMethod, option){
+function internalRequest(req, res, httpMethod, options){
     var reqInner = http.get(options, function(resInner) {
 		console.log('STATUS: ' + resInner.statusCode);
 		console.log('HEADERS: ' + JSON.stringify(resInner.headers));
