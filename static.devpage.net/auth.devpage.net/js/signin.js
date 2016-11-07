@@ -1,3 +1,16 @@
 $("#form-signin").submit(function(){
-    alert('test submit');
+    $.ajax({
+        url:'http://auth.devpage.net/login',
+        type:'POST',
+        data:{
+            "pValue":$("#inputEmail").val(),
+            "uValue":$("#inputPassword").val()
+        },
+        dataType:text,
+        success:function(rtnValue){
+            alert("JWT Token is : " +rtnValue);
+        }
+    });
+
+    return false;
 });
