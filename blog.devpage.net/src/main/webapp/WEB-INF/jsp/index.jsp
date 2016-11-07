@@ -14,7 +14,7 @@
     <title>Blog for Devpage.net</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="http://static.devpage.net/blog.devpage.net/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://static.devpage.net/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="http://static.devpage.net/blog.devpage.net/css/blog.css" rel="stylesheet">
