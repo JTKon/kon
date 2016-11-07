@@ -10,6 +10,7 @@ var jwt = require('jwt-simple');
 var secretKey = 'ommanipadmehum';
 
 app.post('/login', function (req, res, next){
+    
     Account.findOne({id: req.body.uValue}, function(err, account){
         if(err){
             return next(err);
@@ -26,11 +27,10 @@ app.post('/login', function (req, res, next){
                 return res.send(401);
             }
             var token = jwt.encode({id: account.id}, secretKey);
+            res.send(token);
         });
         
     });
-    
-    req.body.uValue   
 });
 
 app.get('/test', function(req, res){
