@@ -7,8 +7,11 @@ var bodyParser = require('body-parser');
 var Account = require('./models/account');
 var bcrypt = require('bcrypt-nodejs');
 var jwt = require('jwt-simple');
+var redis = require('redis');
 
 var secretKey = 'ommanipadmehum';
+
+var redisClient = redis.createClient(6379,'127.0.0.1');
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -34,6 +37,17 @@ app.post('/login', function (req, res, next){
                 return res.send(401);
             }
             var token = jwt.encode({id: account.id}, secretKey);
+            
+            //redis insert
+            redisClient.set(account.id, token, function(err, data){
+                if(err){
+                    console.log(err);
+                    res.send("err : "+err);
+                    return;
+                }
+                redisClient.set.expire(account.id, 600);
+            });
+            
             res.send(token);
         });
         
