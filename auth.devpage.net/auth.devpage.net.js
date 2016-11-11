@@ -3,11 +3,18 @@
 var express = require('express');
 var http = require('http');
 var app = express();
+var bodyParser = require('body-parser');
 var Account = require('./models/account');
 var bcrypt = require('bcrypt-nodejs');
 var jwt = require('jwt-simple');
 
 var secretKey = 'ommanipadmehum';
+
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }));
+
+// parse application/json
+app.use(bodyParser.json());
 
 app.post('/login', function (req, res, next){
     
