@@ -1,0 +1,1 @@
+kill $(ps -ef | grep "auth.devpage.net" | grep -v "grep" | awk '{print $2}')
