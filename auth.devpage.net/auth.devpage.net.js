@@ -20,9 +20,13 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.post('/login', function (req, res, next){
+    console.log("[/login start]");
+    console.log("\t"+"req.body.uValue : "+req.body.uValue);
+    console.log("\t"+"req.body.pValue : "+req.body.pValue);
     
     Account.findOne({id: req.body.uValue}, function(err, account){
         if(err){
+            console.log("\t"+"account find err");
             return next(err);
         }
         if(!account){
@@ -31,23 +35,27 @@ app.post('/login', function (req, res, next){
         
         bcrypt.compare(req.body.pValue, account.pw, function(err, valid){
             if(err){
+                console.log("\t"+"bcrypt compare");
                 return next(err);
             }
             if(!valid){
-                return res.send(401);
+                console.log("\t"+"account invalid");
+                return res.send(401);//401 not authorised
             }
             var token = jwt.encode({id: account.id}, secretKey);
             
             //redis insert
             redisClient.set(account.id, token, function(err, data){
                 if(err){
+                    console.log("\t"+"redis insert error");
                     console.log(err);
                     res.send("err : "+err);
                     return;
                 }
-                redisClient.set.expire(account.id, 600);
+                redisClient.set.expire(account.id, 600);// expire 600 sec
             });
             
+            console.log("\t"+"send token : " + token);
             res.send(token);
         });
         
