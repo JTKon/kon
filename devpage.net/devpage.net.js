@@ -84,12 +84,32 @@ function gateway(req, res, httpMethod){
 }
 
 function internalRequest(req, res, httpMethod, options){
-    console.log("[internalRequest] start");
+    console.log("[internalRequest()]");
     
     var requestUri = 'http://' + options.host + ':' + options.port + options.path;
     console.log("\t"+"requestUri : "+requestUri);
     
     if(httpMethod == "GET"){
+        request.get(
+            requestUri, 
+            function (error, response, body){
+                if(error){
+        	        console.log("\t"+"request.get error!");
+        	        console.log(error);
+        	        res.send(500);
+        	    }
+        	    
+        	    try{
+        	        console.log("\t"+"response.statusCode:"+response.statusCode);
+        	        res.statusCode = response.statusCode;
+        	    }catch(exception){
+        	       console.log("\t"+"response.statusCode read exception");
+        	       console.log(exception);
+        	    }
+
+        	    res.send(body);
+            }
+        ); 
         
     }else if(httpMethod == "POST"){
         request.post(  
@@ -103,13 +123,13 @@ function internalRequest(req, res, httpMethod, options){
         	        console.log(error);
         	        res.send(500);
         	    }
-        	    
+        	    console.log("\t"+"response.statusCode:"+response.statusCode);
+        	    res.statusCode = response.statusCode;
         	    res.send(body);
         	}
         ); 
 
     }    
 }
-
 
 app.listen('7000');
