@@ -30,12 +30,13 @@ app.post('/login', function (req, res, next){
             return next(err);
         }
         if(!account){
-            return res.send(401);
+            console.log("\t"+"account not found");
+            return res.send(204);//204 no content
         }
         
         bcrypt.compare(req.body.pValue, account.pw, function(err, valid){
             if(err){
-                console.log("\t"+"bcrypt compare");
+                console.log("\t"+"bcrypt compare error");
                 return next(err);
             }
             if(!valid){
@@ -52,7 +53,8 @@ app.post('/login', function (req, res, next){
                     res.send("err : "+err);
                     return;
                 }
-                redisClient.set.expire(account.id, 600);// expire 600 sec
+                //redisClient.set.expire(account.id, 600);// expire 600 sec
+                redisClient.expireat(account.id, 600);// expire 600 sec
             });
             
             console.log("\t"+"send token : " + token);

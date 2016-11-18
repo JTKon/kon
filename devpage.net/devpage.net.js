@@ -1,11 +1,22 @@
+/*eslint-env node*/
+
 var express = require('express');
 var http = require('http');
 var app = express();
+var request = require('request');
+var bodyParser = require('body-parser');
 
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }));
+
+// parse application/json
+app.use(bodyParser.json());
+
+// static resource
 app.use(express.static(__dirname + '/assets'));
 
 app.get('/*', function(req, res){
-	gateway(req, res, "PUT");
+    gateway(req, res, "GET");
 });
 
 app.put('/*', function(req, res){
@@ -13,11 +24,11 @@ app.put('/*', function(req, res){
 });
 
 app.post('/*', function(req, res){
-	gateway(req, res, "PUT");
+	gateway(req, res, "POST");
 });
 
 app.delete('/*', function(req, res){
-	gateway(req, res, "PUT");
+	gateway(req, res, "DELETE");
 });
 
 function gateway(req, res, httpMethod){
@@ -40,7 +51,7 @@ function gateway(req, res, httpMethod){
 			res.redirect('/work_in_progress/work_in_progress.html');
 
 		}else if(host == domainBlog){
-			var options = {
+		    var options = {
 				host: '127.0.0.1',
 				port: '7030',
 				path: req.url
@@ -55,6 +66,9 @@ function gateway(req, res, httpMethod){
 				path: req.url
 			};
 			
+			// Add headers
+			res.setHeader('Access-Control-Allow-Origin', '*');
+			
 			internalRequest(req, res, httpMethod, options);
 
 		}else{
@@ -63,34 +77,38 @@ function gateway(req, res, httpMethod){
 		}
 
 	} catch (err) {
+	    console.log('gateway() error!!!');
 		console.log(err);
 		res.redirect('http://devpage.net');	
 	}
 }
 
 function internalRequest(req, res, httpMethod, options){
-    var reqInner = http.get(options, function(resInner) {
-		console.log('STATUS: ' + resInner.statusCode);
-		console.log('HEADERS: ' + JSON.stringify(resInner.headers));
+    console.log("[internalRequest] start");
+    
+    var requestUri = 'http://' + options.host + ':' + options.port + options.path;
+    console.log("\t"+"requestUri : "+requestUri);
+    
+    if(httpMethod == "GET"){
+        
+    }else if(httpMethod == "POST"){
+        request.post(  
+        	{ 
+        		uri: requestUri,
+        		form : req.body
+        	},   
+        	function (error, response, body) {
+        	    if(error){
+        	        console.log("\t"+"request.post error!");
+        	        console.log(error);
+        	        res.send(500);
+        	    }
+        	    
+        	    res.send(body);
+        	}
+        ); 
 
-		// Buffer the body entirely for processing as a whole.
-		var bodyChunks = [];
-		resInner.on('data', function(chunk) {
-			// You can process streamed parts here...
-			bodyChunks.push(chunk);
-
-		}).on('end', function() {
-			var body = Buffer.concat(bodyChunks);
-			console.log('BODY: ' + body);
-			// ...and/or process the entire body here.
-			res.contentType(resInner.headers["content-type"]);	
-			res.send(body);	
-		});
-	});
-
-	reqInner.on('error', function(e) {
-		console.log('ERROR: ' + e.message);
-	});
+    }    
 }
 
 
