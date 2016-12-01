@@ -26,7 +26,7 @@
     <div class="blog-masthead">
       <div class="container">
         <nav class="blog-nav">
-          <a class="blog-nav-item active" href="#">Home</a>
+          <a class="blog-nav-item active" href="http://blog.devpage.net">Home</a>
 		  <a class="blog-nav-item" id="btnSignin" target="_blank" href="http://static.devpage.net/auth.devpage.net/html/signin.html">SignIn</a>
         </nav>
       </div>
@@ -39,9 +39,9 @@
         <p class="lead blog-description">안녕하신가! 힘세고 강한 아침, 만일 내게 물어보면 나는 kon.</p>
       </div>
 
-      <div class="row">
+      <div class="row" id="blog-middle">
 
-        <div class="col-sm-8 blog-main">
+        <div id="blog-main" class="col-sm-8 blog-main">
 			
           <div class="blog-post">
             <h2 class="blog-post-title">첫번째 포스팅</h2>
