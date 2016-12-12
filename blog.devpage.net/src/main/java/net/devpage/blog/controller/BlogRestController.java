@@ -8,6 +8,7 @@ import net.devpage.blog.entity.BlogContent;
 import net.devpage.blog.service.CounterService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,7 +25,7 @@ public class BlogRestController {
     
     @RequestMapping("/")
 	public String index(Model model) {
-    	return "index";
+	    return "index";
 	}
 	
 	@RequestMapping("/content/test/deleteAll")
@@ -40,6 +41,12 @@ public class BlogRestController {
 	@RequestMapping("/content/test/findById")
 	public @ResponseBody BlogContent findById() {
         return repository.findById("584521cda19cee12a0ddbaa8");
+	}
+	
+	@RequestMapping("/content/test/findByWDate")
+	public @ResponseBody BlogContent findByWDate() {
+	    //https://www.mkyong.com/mongodb/spring-data-mongodb-get-last-modified-records-date-sorting/ <- 걍 이거쓰자
+	    //return repository.findByWDate(new Sort(Sort.Direction.DESC, "wDate"));
 	}
 	
 	@RequestMapping("/content/test/findByArchive")
