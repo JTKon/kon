@@ -96,18 +96,20 @@ function internalRequest(req, res, httpMethod, options){
                 if(error){
         	        console.log("\t"+"request.get error!");
         	        console.log(error);
-        	        res.send(500);
+        	        res.send('internalRequest Error', 500);
         	    }
         	    
         	    try{
         	        console.log("\t"+"response.statusCode:"+response.statusCode);
         	        res.statusCode = response.statusCode;
+        	        res.send(body);
         	    }catch(exception){
-        	       console.log("\t"+"response.statusCode read exception");
+        	       console.log("\t"+"response.statusCode read exception :"+httpMethod);
         	       console.log(exception);
+        	       res.send('internalRequest Error', 500);
         	    }
 
-        	    res.send(body);
+        	   
             }
         ); 
         
@@ -121,11 +123,19 @@ function internalRequest(req, res, httpMethod, options){
         	    if(error){
         	        console.log("\t"+"request.post error!");
         	        console.log(error);
-        	        res.send(500);
+        	        res.send('internalRequest Error', 500);
         	    }
-        	    console.log("\t"+"response.statusCode:"+response.statusCode);
-        	    res.statusCode = response.statusCode;
-        	    res.send(body);
+        	    
+        	    try{
+        	       console.log("\t"+"response.statusCode:"+response.statusCode);
+        	       res.statusCode = response.statusCode;
+        	       res.send(body);
+        	    }catch(exception){
+        	       console.log("\t"+"response.statusCode read exception :"+httpMethod);
+        	       console.log(exception);
+        	       res.send('internalRequest Error', 500);
+        	    }
+        	    
         	}
         ); 
 

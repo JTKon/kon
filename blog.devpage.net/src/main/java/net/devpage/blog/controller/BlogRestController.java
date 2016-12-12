@@ -43,11 +43,13 @@ public class BlogRestController {
         return repository.findById("584521cda19cee12a0ddbaa8");
 	}
 	
+	/*
 	@RequestMapping("/content/test/findByWDate")
 	public @ResponseBody BlogContent findByWDate() {
 	    //https://www.mkyong.com/mongodb/spring-data-mongodb-get-last-modified-records-date-sorting/ <- 걍 이거쓰자
 	    //return repository.findByWDate(new Sort(Sort.Direction.DESC, "wDate"));
 	}
+	*/
 	
 	@RequestMapping("/content/test/findByArchive")
 	public @ResponseBody List<BlogContent> findByArchive() {
