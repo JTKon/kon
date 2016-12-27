@@ -26,7 +26,7 @@
     <div class="blog-masthead">
       <div class="container">
         <nav class="blog-nav">
-          <a class="blog-nav-item active" href="http://blog.devpage.net">Home</a>
+          <a class="blog-nav-item active" id="goHome" href="#">Home</a>
 		  <a class="blog-nav-item" id="btnSignin" target="_blank" href="http://static.devpage.net/auth.devpage.net/html/signin.html">SignIn</a>
         </nav>
       </div>
@@ -35,32 +35,28 @@
     <div class="container">
 
       <div class="blog-header">
-        <h1 class="blog-title">Devpage.Net Blog</h1>
-        <p class="lead blog-description">안녕하신가! 힘세고 강한 아침, 만일 내게 물어보면 나는 kon.</p>
+        <h1 id="blog-title" class="blog-title">Devpage.Net Blog</h1>
+        <p id="blog-description" class="lead blog-description">안녕하신가! 힘세고 강한 아침, 만일 내게 물어보면 나는 kon.</p>
       </div>
 
       <div class="row" id="blog-middle">
 
         <div id="blog-main" class="col-sm-8 blog-main">
 			
-          <div class="blog-post">
-            <h2 class="blog-post-title">첫번째 포스팅</h2>
-            <p class="blog-post-meta">2016-10-18 14:20:35 by <a href="#">kon</a></p>
-
-            <p>첫번째 포스팅은 그냥 html에 박는거지요. 역시.</p>
-            
-          </div><!-- /.blog-post -->
-		
+	      <div id="blogContents"></div>
+          
+          <!--
           <nav>
             <ul class="pager">
               <li><a href="#">Previous</a></li>
               <li><a href="#">Next</a></li>
             </ul>
           </nav>
+          -->
 
         </div><!-- /.blog-main -->
 
-        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+        <div id="blog-sidebar" class="col-sm-3 col-sm-offset-1 blog-sidebar">
           <div class="sidebar-module sidebar-module-inset">
 			<p align="center"><img src="http://static.devpage.net/blog.devpage.net/img/work_in_progress.png" alt="work in progress" /></p>
             <h4>About</h4>
@@ -69,8 +65,10 @@
           </div>
           <div class="sidebar-module">
             <h4>Archives</h4>
-			<ol class="list-unstyled">
-              <li><a href="#">잡담</a></li>
+			<ol id="archive-list" class="list-unstyled">
+              <li><a href="#">Gossip</a></li>
+              <li><a href="#">DevpageNet</a></li>
+              <li><a href="#">unclassified</a></li>
             </ol>
           </div>
           <div class="sidebar-module">
@@ -101,5 +99,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="http://static.devpage.net/bootstrap/js/bootstrap.min.js"></script>
 	<script src="http://static.devpage.net/blog.devpage.net/js/common.js"></script>
+	<script src="http://static.devpage.net/blog.devpage.net/js/index.js"></script>
   </body>
 </html>

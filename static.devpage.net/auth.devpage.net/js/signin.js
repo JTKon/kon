@@ -9,7 +9,7 @@ $("#form-signin").submit(function(){
             "uValue":$("#inputEmail").val(),
             "pValue":$("#inputPassword").val()
         },
-        dataType:"text",
+        dataType:"json",
         success:function(rtnValue, textStatus, xhr){
             
             if(xhr.status!=200){
@@ -18,6 +18,7 @@ $("#form-signin").submit(function(){
                 console.log("status :"+xhr.status);
             }else{
                 console.log("Login Success : " +rtnValue);
+                console.log(rtnValue);
                 tkn = rtnValue;            
                 
                 try{

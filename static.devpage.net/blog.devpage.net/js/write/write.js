@@ -1,3 +1,4 @@
+
 document.domain = 'devpage.net';
 
 // IE인지 확인한다.
@@ -374,11 +375,50 @@ $(document).ready(function(){
 	
 	//작성한 글 저장
 	$("#save_write").click(function(){
-	    var content = {
-	       "title" : $("#archives_selector").text().trim(),
-	       "content" : $(edit()).contents().find("body").html().trim()
-	    };
 	    
-	    //console.log(content);
+	    var id = decodeURIComponent(urlParam('id'));
+	    
+	    var content = {
+	       "archive" : $("#archives_selector").text().trim(),
+	       "title" : $("#title").val(),
+	       "content" : $(edit()).contents().find("body").html().trim(),
+	       "wId" : id
+	    };
+
+	    console.log('tkn:'+decodeURIComponent(urlParam('tkn')));
+	    console.log(content);
+	    
+	    var tkn = decodeURIComponent(urlParam('tkn'));
+	    if(tkn==null){
+	        alert('Log In First');
+	        return false;
+	    }
+	    
+	    if(content=="Archives"){
+	        alert('select Archive');
+	        return false;
+	    }
+	    
+        $.ajax({
+            url: 'http://blog.devpage.net/content/',
+            headers: {
+                'X-Auth':tkn,
+                'uId': id
+            },
+            contentType: "application/json; charset=UTF-8",
+            method: 'POST',
+            dataType: 'json',
+            data: JSON.stringify(content),
+            success: function(data){
+                alert('Write Success');
+                console.log('succes: '+data);
+            }, 
+            error:function(request, status, error){
+                alert('Write Error');
+                console.log("code:"+request.status);
+                console.log("message:"+request.responseText);
+                console.log("error:"+error);
+            }
+        });
 	});
 });
