@@ -1,6 +1,5 @@
 # Devpage.net
-
-안녕하세요. kon씨 입니다.
+안녕하세요. kon 입니다.
 
 https://github.com/JTKon/kon 은 kon씨의 site인 devpage.net을 구축하기 위해서 만들어진 소스 저장소입니다.
 
@@ -20,7 +19,8 @@ devpage.net은 현재 아래와 같이 구축 되어 있습니다.
 
 추후 진행 예정
 
-* blog.devpage.net의 CRUD을 구현 할 예정입니다.(인증된 인원에 한해 CUD가능)
+* blog.devpage.net의 기본적인 CRUD가 구현되었습니다.(2016.12.27)
+* 현재까지의 진행상황을 blog에 써보면서, blog의 미진한 부분을 업데이트 하려고 합니다.
 
 소스는 도메인별 디렉토리로 구분되어 https://github.com/JTKon/kon 에서 보실 수 있습니다.
 
