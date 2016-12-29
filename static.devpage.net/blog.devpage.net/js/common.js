@@ -42,3 +42,9 @@ function convertHtmlBlogContents(jsonBlogContent){
     console.log(templet);
     return templet;
 }
+
+// 꺽쇠랑 엔드표시 HtmlCharacter로 변경
+function replaceHtmlCharacters(sContent){
+   sContent = sContent.replace(/&/gi,'&amp;').replace(/</gi,'&lt;').replace(/>/gi,'&gt;'); 
+   return sContent;
+}

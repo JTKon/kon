@@ -191,6 +191,8 @@ function fontSizeSelector(){
 	});
 }
 
+
+
 var ieFlag;// IE인지 확인
 
 var range;//기능버튼 클릭시 IE에서는 ifrm editor의 focus를 읽어 버림으로 range(커서 위치)를 저장해 둔다.
@@ -368,9 +370,24 @@ $(document).ready(function(){
 		}
 	});
 	
+	//code block
+	$("#btnInsertCodeBlock").click(function(){
+    	if($("#codeBlockTextArea").val()!=""){
+    	    insertHTML("</br>");
+    	    var codeBlock = "<pre class='brush:"+$("#codeBlockStyle").val()+"'>"+replaceHtmlCharacters($("#codeBlockTextArea").val())+"</pre></br>";
+    		insertHTML(codeBlock);
+    		$("#codeBlockStyle").val("");
+    	}
+    	$("#codeBlockInsert").hide();
+    });
+    
+    $("#btnCodeBlock").click(function(){
+        $("#codeBlockInsert").toggle();
+    });
+	
 	//title 옆 archive 선택시 선택한 값을 보여줌
 	$(".archive_name").click(function(){
-	    $("#archives_selector").html($(this).text()+" <span class='caret'></span>")
+	    $("#archives_selector").html($(this).text()+" <span class='caret'></span>");
 	});
 	
 	//작성한 글 저장

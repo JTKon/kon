@@ -1,11 +1,15 @@
 package net.devpage.blog.controller;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.List;
 
-import net.devpage.blog.dao.BlogContentRepository;
+import javax.servlet.http.HttpServletResponse;
+
 import net.devpage.blog.entity.BlogContent;
 import net.devpage.blog.service.BlogContentService;
-import net.devpage.blog.service.CounterService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,8 +26,37 @@ public class BlogRestController {
     private BlogContentService blogContentService;
     
     @RequestMapping("/")
-	public String index() {
-	    return "index";
+	public @ResponseBody String index(HttpServletResponse response) {
+	
+	   InputStreamReader reader = null;
+	   BufferedReader buff = null;
+	   String pageContents = "";
+	   StringBuilder contents = new StringBuilder();
+	   
+	   try{
+    	   String urlPath = "http://localhost:7050/blog.devpage.net/html/index.html";            
+           URL url = new URL(urlPath);
+           URLConnection con = (URLConnection)url.openConnection();
+           reader = new InputStreamReader (con.getInputStream(), "utf-8");
+           buff = new BufferedReader(reader);
+            
+           while((pageContents = buff.readLine())!=null){
+                contents.append(pageContents);
+                contents.append("\r\n");
+           }
+           
+	   }catch(Exception e){
+	       e.printStackTrace();
+	   }finally{
+	       if(buff!=null){try{buff.close();}catch(Exception e){e.printStackTrace();}}
+	       if(reader!=null){try{reader.close();}catch(Exception e){e.printStackTrace();}}
+	   }
+	   
+	   response.setContentType("text/plain");
+       response.setCharacterEncoding("UTF-8");
+	   return contents.toString();
+	    
+	   //return "index";
 	}
 	
 	@RequestMapping(value="/content/findLastWDate", method=RequestMethod.GET)

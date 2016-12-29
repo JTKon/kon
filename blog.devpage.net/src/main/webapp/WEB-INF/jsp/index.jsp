@@ -14,11 +14,15 @@
     <title>Blog for Devpage.net</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="http://static.devpage.net/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://static.devpage.net/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 
     <!-- Custom styles for this template -->
-    <link href="http://static.devpage.net/blog.devpage.net/css/blog.css" rel="stylesheet">
-	
+    <link href="http://static.devpage.net/blog.devpage.net/css/blog.css" rel="stylesheet" type="text/css" />
+    
+    <!-- Syntex Highlighter -->
+    <link href="http://static.devpage.net/syntaxhighlighter/styles/shCore.css" rel="stylesheet" type="text/css" />
+	<link href="http://static.devpage.net/syntaxhighlighter/styles/shThemeDefault.css" rel="stylesheet" type="text/css" />
+    
   </head>
 
   <body>
@@ -36,7 +40,7 @@
 
       <div class="blog-header">
         <h1 id="blog-title" class="blog-title">Devpage.Net Blog</h1>
-        <p id="blog-description" class="lead blog-description">안녕하신가! 힘세고 강한 아침, 만일 내게 물어보면 나는 kon.</p>
+        <p id="blog-description" class="lead blog-description"></p>
       </div>
 
       <div class="row" id="blog-middle">
@@ -98,7 +102,15 @@
     <!-- If you need to support older browsers like Internet Explorer 6-8, Opera 12.1x or Safari 5.1+, use jQuery 1.12. -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="http://static.devpage.net/bootstrap/js/bootstrap.min.js"></script>
-	<script src="http://static.devpage.net/blog.devpage.net/js/common.js"></script>
+    <script src="http://static.devpage.net/blog.devpage.net/js/wiseSaying.js"></script>
+    <script src="http://static.devpage.net/blog.devpage.net/js/common.js"></script>
 	<script src="http://static.devpage.net/blog.devpage.net/js/index.js"></script>
+	
+	<!-- Syntex Highlighter -->
+	<script src="http://static.devpage.net/syntaxhighlighter/scripts/shCore.js"></script>
+	<script src="http://static.devpage.net/syntaxhighlighter/scripts/shBrushBash.js"></script>
+	<script src="http://static.devpage.net/syntaxhighlighter/scripts/shBrushJScript.js"></script>
+	<script src="http://static.devpage.net/syntaxhighlighter/scripts/shBrushJava.js"></script>	
+	
   </body>
 </html>

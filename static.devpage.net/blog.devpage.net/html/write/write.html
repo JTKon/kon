@@ -95,6 +95,7 @@
 					<img id="btnInsertUrl" src="http://static.devpage.net/blog.devpage.net/img/write/ok.gif"  />
 				</div>
 			</div>
+			<div class="btn btn-default"><img id="btnCodeBlock" src="http://static.devpage.net/blog.devpage.net/img/write/source.png" /></div>
 			<div class="btn btn-default"><img id="btnSource" src="http://static.devpage.net/blog.devpage.net/img/write/source.png" /></div>
 			&nbsp;
 		</div>
@@ -103,6 +104,18 @@
     <div id="divEditor" class="panel panel-default" style="margin-bottom:0px;margin-top:2px">
     	<iframe id="editor" src="http://static.devpage.net/blog.devpage.net/html/write/editor.html" style="width:100%; height:295px;" frameborder="0" scrolling="auto" style="" allowtransparency="true" ></iframe>
     	<textarea id="sourceView" class="form-control" style="width:100%;display:none; height:295px; overflow:auto; border: 0px;"></textarea>
+    	<div id="codeBlockInsert" style="width:100%;display:none; height:295px; overflow:auto; border: 1px solid black;">
+    	   <div style="background-color: #efefef;">
+    	        <select id="codeBlockStyle">
+    	            <option value="">Other</option>
+                    <option value="javascript">javascript</option>
+                    <option value="java">java</option>
+                    <option value="bash">bash</option>
+                </select>
+                <img id="btnInsertCodeBlock" src="http://static.devpage.net/blog.devpage.net/img/write/ok.gif"  />
+    	   </div>
+    	   <textarea id="codeBlockTextArea" class="form-control" style="width:100%; height:270px; overflow:auto; border: 0px solid black;"></textarea>
+    	</div>
     </div>
 
     <style type="text/css">

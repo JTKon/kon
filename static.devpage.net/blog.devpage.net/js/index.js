@@ -40,6 +40,7 @@ function getLastContent(){
                 console.log("/content/findLastWDate Success : ");
                 console.log(rtnValue);
                 $("#blogContents").html(convertHtmlBlogContents(rtnValue));
+                SyntaxHighlighter.highlight();
             }
 
         }, 
@@ -75,6 +76,7 @@ function findArchiveContents(archive){
                     content.toggle();
                 });
                 $(".blog-post-title").addClass("pointer");
+                SyntaxHighlighter.highlight();
             }
 
         }, 
@@ -104,4 +106,5 @@ $(document).ready(function(){
     goHome();// 상단 홈버튼 이벤트
     setArchivesEvent();// archive-list 클릭시 해당 리스트 보여줌
     getLastContent();//마지막으로 쓴 글 표기
+     $("#blog-description").text(getWiseSaying());
 });
