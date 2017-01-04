@@ -151,27 +151,35 @@ function internalRequest(req, res, httpMethod, options){
     console.log("\t"+"requestUri : "+requestUri);
     
     if(httpMethod == "GET"){
-        request.get(
-            requestUri, 
-            function (error, response, body){
-                if(error){
-        	        console.log("\t"+"request.get error!");
-        	        console.log(error);
-        	        res.send('internalRequest Error', 500);
-        	    }else{
-            	    try{
-            	        console.log("\t"+"response.statusCode:"+response.statusCode);
-            	        res.statusCode = response.statusCode;
-            	        res.send(body);
-            	    }catch(exception){
-            	       console.log("\t"+"response.statusCode read exception :"+httpMethod);
-            	       console.log(exception);
-            	       res.send('internalRequest Error', 500);
-            	    }
-        	    }
-            }
-        ); 
-        
+        request(
+        	{ method: 'GET', uri: requestUri, json : req.body, followRedirect: false},// 내부 redirect는 안함. 아래서 301/302 처리.
+        	function (error, response, body) {
+        		if(error){
+        			console.log("\t"+"request.get error!");
+        			console.log(error);
+        			res.send('internalRequest Error', 500);
+        		}else{
+        			try{
+        			   console.log("\t"+"request.get success!");
+        			   console.log("\t"+"response.statusCode:"+response.statusCode);
+                       console.log("\t"+"response.headers.location:"+response.headers.location);
+                       res.statusCode = response.statusCode;
+                       
+                       //redirect 처리
+                       if(response.statusCode == 302 || response.statusCode == 301){
+                            res.statusCode = 301;
+                            res.setHeader('Location', response.headers.location);
+                       }
+                       
+        			   res.send(body);
+        			}catch(exception){
+        			   console.log("\t"+"response.statusCode read exception :"+httpMethod);
+        			   console.log(exception);
+        			   res.send('internalRequest Error', 500);
+        			}
+        		}
+        	}
+        );
     }else if(httpMethod == "POST"){
         
         // blog.devpage.net으로 POST 요청 인경우

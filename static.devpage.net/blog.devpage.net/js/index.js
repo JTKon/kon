@@ -24,6 +24,25 @@ function goHome(){
     });
 }
 
+//facebook comment 달기
+function setComment(archive, seq){
+     var fbCommentButton = '<button type="button" class="btn btn-primary btn-xs fbCommentBtn">Show Comment</button>';
+     var fbCommentFrame = '<div class="fbCommentFrame" style="width:100%;"></div>';
+     
+     var blogPost = $("#blog-post-"+archive+"-"+seq);
+     blogPost.find(".commentArea").html(fbCommentButton+fbCommentFrame);
+     blogPost.find(".commentArea .fbCommentBtn").click(function(){
+        if($(this).text()=="Show Comment"){
+            var fbCommentIframe = "<iframe class='fbCommentIframe' src='http://static.devpage.net/blog.devpage.net/html/faceBookComment.html?from=blog&archive="+archive+"&seq="+seq+"' style='width:100%; height:210px;' frameborder='0'></iframe>";
+            blogPost.find(".commentArea .fbCommentFrame").html(fbCommentIframe);
+            $(this).text("Hide Comment")
+        }else{
+            blogPost.find(".commentArea .fbCommentFrame iframe").remove();
+            $(this).text("Show Comment")
+        }
+     });
+}
+
 //마지막으로 쓴 글 표기
 function getLastContent(){
     $.ajax({
@@ -39,13 +58,52 @@ function getLastContent(){
             }else{
                 console.log("/content/findLastWDate Success : ");
                 console.log(rtnValue);
+                
                 $("#blogContents").html(convertHtmlBlogContents(rtnValue));
                 SyntaxHighlighter.highlight();
+                
+                for(var i=0; i<rtnValue.length; i++){
+                    setComment(rtnValue[i].archive, rtnValue[i].seq);
+                }
             }
 
         }, 
         error:function(request, status, error){
             alert('/content/findLastWDate Error');
+            console.log("code:"+request.status);
+            console.log("message:"+request.responseText);
+            console.log("error:"+error);
+        }
+    });
+}
+
+//seq에 해당하는 글 표기
+function getSeqContent(seq){
+    $.ajax({
+        url:"http://blog.devpage.net/content/"+seq,
+        type:"GET",
+        dataType:"json",
+        success:function(rtnValue, textStatus, xhr){
+            
+            if(xhr.status!=200){
+                alert("/content/"+seq+" Fail :"+rtnValue);
+                console.log("/content/"+seq+" Fail :"+rtnValue);
+                console.log("status :"+xhr.status);
+            }else{
+                console.log("/content/"+seq+" Success : ");
+                console.log(rtnValue);
+                
+                $("#blogContents").html(convertHtmlBlogContents(rtnValue));
+                SyntaxHighlighter.highlight();
+                
+                for(var i=0; i<rtnValue.length; i++){
+                    setComment(rtnValue[i].archive, rtnValue[i].seq);
+                }
+            }
+
+        }, 
+        error:function(request, status, error){
+            alert("/content/"+seq+" Error");
             console.log("code:"+request.status);
             console.log("message:"+request.responseText);
             console.log("error:"+error);
@@ -71,12 +129,15 @@ function findArchiveContents(archive){
                 $("#blogContents").html(convertHtmlBlogContents(rtnValue));
                 $(".blog-post-content").hide();
                 $(".blog-post-title").click(function(){
-                    console.log('clicked');
                     var content = $(this).parent().find(".blog-post-content");
                     content.toggle();
                 });
                 $(".blog-post-title").addClass("pointer");
                 SyntaxHighlighter.highlight();
+                
+                for(var i=0; i<rtnValue.length; i++){
+                    setComment(rtnValue[i].archive, rtnValue[i].seq);
+                }
             }
 
         }, 
@@ -105,6 +166,14 @@ function setArchivesEvent(){
 $(document).ready(function(){
     goHome();// 상단 홈버튼 이벤트
     setArchivesEvent();// archive-list 클릭시 해당 리스트 보여줌
-    getLastContent();//마지막으로 쓴 글 표기
+    
+    var seq = urlParam("seq");
+    if(seq){
+        getSeqContent(seq);//seq에 해당하는 글 표기
+    }else{
+        getLastContent();//마지막으로 쓴 글 표기
+    }
+    
+        
      $("#blog-description").text(getWiseSaying());
 });

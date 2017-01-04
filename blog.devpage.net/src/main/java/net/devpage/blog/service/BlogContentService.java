@@ -47,6 +47,11 @@ public class BlogContentService {
         query.addCriteria(Criteria.where("archive").is(archiveName));
         query.with(new Sort(Sort.Direction.DESC, "wDate"));
         return mongo.find(query, BlogContent.class);
-        //return repository.findByArchive(archiveName);
+    }
+    
+    public List<BlogContent> seq(int seq){
+        Query query = new Query();
+        query.addCriteria(Criteria.where("seq").is(seq));
+        return mongo.find(query, BlogContent.class);
     }
 }

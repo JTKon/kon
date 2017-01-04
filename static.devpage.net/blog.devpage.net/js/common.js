@@ -27,11 +27,12 @@ function urlParam (name){
 
 // jsonBlogContent을 html로 변환
 function convertHtmlBlogContents(jsonBlogContent){
-    var contentTemplet = '<div class="blog-post"><span class="blog-post-title">${title}</span><span class="blog-post-archive">${archive}</span><p class="blog-post-meta">${wDate} by <a href="#">${wId}</a></p><div class="blog-post-content">${content}</div></div>';
+    var contentTemplet = '<div id="blog-post-${id}" class="blog-post"><span class="blog-post-title">${title}</span><span class="blog-post-archive">${archive}</span><p class="blog-post-meta">${wDate} by <a href="#">${wId}</a></p><div class="blog-post-content">${content}</div><div class="commentArea"></div></div>';
     var templet = "";
     
     for(var i=0; i<jsonBlogContent.length; i++){
         templet += contentTemplet
+            .replace("${id}",jsonBlogContent[i].archive+"-"+jsonBlogContent[i].seq)
             .replace("${title}",jsonBlogContent[i].title)
             .replace("${archive}",jsonBlogContent[i].archive+"-"+jsonBlogContent[i].seq)
             .replace("${wDate}",timeConverter(jsonBlogContent[i].wDate))
@@ -39,7 +40,7 @@ function convertHtmlBlogContents(jsonBlogContent){
             .replace("${content}",jsonBlogContent[i].content);
     }
     
-    console.log(templet);
+    //console.log(templet);
     return templet;
 }
 

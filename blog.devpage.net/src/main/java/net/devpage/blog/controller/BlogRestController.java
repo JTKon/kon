@@ -69,9 +69,20 @@ public class BlogRestController {
 	    return blogContentService.insertContent(blogContent);
 	}
 	
+	@RequestMapping(value="/content/{seq}", method=RequestMethod.GET)
+	public @ResponseBody List<BlogContent> seq(@PathVariable("seq") int seq) {
+	    System.out.println("/content/"+seq);
+	    return blogContentService.seq(seq);
+	}
+	
 	@RequestMapping(value="/archive/{archiveName}", method=RequestMethod.GET)
 	public @ResponseBody List<BlogContent> archive(@PathVariable("archiveName") String archiveName) {
 	    return blogContentService.archive(archiveName);
+	}
+	
+	@RequestMapping(value="/redirect/{seq}", method=RequestMethod.GET)
+	public String redriectSeq(@PathVariable("seq") String seq) {
+	    return "redirect:http://blog.devpage.net/?seq="+seq;
 	}
 	
 	/*
