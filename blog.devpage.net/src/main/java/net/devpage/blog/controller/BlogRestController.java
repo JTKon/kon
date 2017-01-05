@@ -71,7 +71,6 @@ public class BlogRestController {
 	
 	@RequestMapping(value="/content/{seq}", method=RequestMethod.GET)
 	public @ResponseBody List<BlogContent> seq(@PathVariable("seq") int seq) {
-	    System.out.println("/content/"+seq);
 	    return blogContentService.seq(seq);
 	}
 	

@@ -372,11 +372,23 @@ $(document).ready(function(){
 	
 	//code block
 	$("#btnInsertCodeBlock").click(function(){
-    	if($("#codeBlockTextArea").val()!=""){
-    	    insertHTML("</br>");
-    	    var codeBlock = "<pre class='brush:"+$("#codeBlockStyle").val()+"'>"+replaceHtmlCharacters($("#codeBlockTextArea").val())+"</pre></br>";
-    		insertHTML(codeBlock);
-    		$("#codeBlockStyle").val("");
+	
+	    if($("#codeBlockTextArea").val()!=""){
+    	
+    	    insertHTML("<br />");
+    	    var codeBlock = "";
+    	    
+    	    var codeBlockStyle = $("#codeBlockStyle").val();
+    	    console.log(codeBlockStyle);
+    	    
+    	    if(codeBlockStyle == "base64Image"){
+    	       codeBlock = "<img alt='Embedded Image' src='"+$("#codeBlockTextArea").val()+"' />";
+    	    }else{
+    	       codeBlock = "<pre class='brush:"+$("#codeBlockStyle").val()+"'>"+replaceHtmlCharacters($("#codeBlockTextArea").val())+"</pre></br>";
+    	    }
+    	    
+    	    insertHTML(codeBlock);
+    		$("#codeBlockTextArea").val("");
     	}
     	$("#codeBlockInsert").hide();
     });
