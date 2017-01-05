@@ -34,7 +34,7 @@ public class BlogRestController {
 	   StringBuilder contents = new StringBuilder();
 	   
 	   try{
-    	   String urlPath = "http://localhost:7050/blog.devpage.net/html/index.html";            
+    	   String urlPath = "http://localhost:7050/static/blog/html/index.html";            
            URL url = new URL(urlPath);
            URLConnection con = (URLConnection)url.openConnection();
            reader = new InputStreamReader (con.getInputStream(), "utf-8");
