@@ -26,20 +26,40 @@ function goHome(){
 
 //facebook comment 달기
 function setComment(archive, seq){
-     var fbCommentButton = '<button type="button" class="btn btn-primary btn-xs fbCommentBtn">Show Comment</button>';
-     var fbCommentFrame = '<div class="fbCommentFrame" style="width:100%;"></div>';
+     var fbCommentButton = '<div class="fbCommentBtn pointer">Comment <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></div>';
+     var fbCommentFrame = '<div id="fb-commentFrame-'+seq+'" class="fbCommentFrame" style="width:100%;"></div>';
      
      var blogPost = $("#blog-post-"+archive+"-"+seq);
      blogPost.find(".commentArea").html(fbCommentButton+fbCommentFrame);
      blogPost.find(".commentArea .fbCommentBtn").click(function(){
-        if($(this).text()=="Show Comment"){
-            var fbCommentIframe = "<iframe class='fbCommentIframe' src='http://blog.devpage.net/static/blog/html/faceBookComment.html?from=blog&archive="+archive+"&seq="+seq+"' style='width:100%; height:210px;' frameborder='0'></iframe>";
-            blogPost.find(".commentArea .fbCommentFrame").html(fbCommentIframe);
-            $(this).text("Hide Comment")
-        }else{
-            blogPost.find(".commentArea .fbCommentFrame iframe").remove();
-            $(this).text("Show Comment")
+        var commentBtn = $(this);
+        var commentIcon = commentBtn.find('span.glyphicon');
+        
+        if(commentBtn.hasClass("ShowComment")){//닫기
+            //blogPost.find(".commentArea .fbCommentFrame").empty();//자식 노드 모두 삭제
+            blogPost.find(".commentArea .fbCommentFrame").hide();
+            commentBtn.removeClass("ShowComment");
+            commentIcon.removeClass("glyphicon-menu-up");
+            commentIcon.addClass("glyphicon-menu-down");
+            
+        }else{//열기
+            
+            //기존에 한번이라도 열어본 경우
+            if(blogPost.find(".commentArea .fbCommentFrame .fb-comments").length>0){
+                blogPost.find(".commentArea .fbCommentFrame").show();
+            
+            }else{//처음 여는 경우
+                var fbCommentDiv = '<div class="fb-comments" data-href="http://blog.devpage.net/redirect/'+seq+'" data-width="100%" data-numposts="5"></div>';
+                blogPost.find(".commentArea .fbCommentFrame").html(fbCommentDiv);
+                FB.XFBML.parse($("#fb-commentFrame-"+seq)[0]);
+            }
+            
+            commentBtn.addClass("ShowComment");
+            commentIcon.removeClass("glyphicon-menu-down");
+            commentIcon.addClass("glyphicon-menu-up");
+            
         }
+       
      });
 }
 
@@ -162,6 +182,15 @@ function setArchivesEvent(){
     });
 }
 
+// use facebook comment plugin
+function fbInit (d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v2.8&appId=752926071522086";
+  fjs.parentNode.insertBefore(js, fjs);
+}
+
 //시작
 $(document).ready(function(){
     goHome();// 상단 홈버튼 이벤트
@@ -173,7 +202,8 @@ $(document).ready(function(){
     }else{
         getLastContent();//마지막으로 쓴 글 표기
     }
-    
         
-     $("#blog-description").text(getWiseSaying());
+    $("#blog-description").text(getWiseSaying());
+    
+    fbInit(document, 'script', 'facebook-jssdk');
 });

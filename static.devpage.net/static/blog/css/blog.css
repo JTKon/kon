@@ -154,14 +154,16 @@ h6, .h6 {
   color: #333;
 }
 .blog-post-meta {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   color: #999;
 }
 .blog-post-archive {
   font-size: 15px;
   margin-left: 5px;
 }
-
+.blog-post-content {
+  margin-bottom: 10px;
+}
 
 
 /*
