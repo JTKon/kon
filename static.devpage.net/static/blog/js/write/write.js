@@ -382,7 +382,7 @@ $(document).ready(function(){
     	    console.log(codeBlockStyle);
     	    
     	    if(codeBlockStyle == "base64Image"){
-    	       codeBlock = "<img alt='Embedded Image' src='"+$("#codeBlockTextArea").val()+"' />";
+    	       codeBlock = "<img alt='Embedded Image' src='"+$("#codeBlockTextArea").val()+"' style='width:100%' />";
     	    }else{
     	       codeBlock = "<pre class='brush:"+$("#codeBlockStyle").val()+"'>"+replaceHtmlCharacters($("#codeBlockTextArea").val())+"</pre></br>";
     	    }
