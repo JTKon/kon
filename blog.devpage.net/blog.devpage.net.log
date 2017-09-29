@@ -1,0 +1,47 @@
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v1.4.1.RELEASE)
+
+2017-09-29 00:28:21.562  INFO 2874 --- [           main] net.devpage.blog.BlogApplication         : Starting BlogApplication v0.0.1-SNAPSHOT on localhost.localdomain with PID 2874 (/devpage/kon/blog.devpage.net/target/blog.devpage.net.war started by root in /devpage/kon/blog.devpage.net)
+2017-09-29 00:28:21.564  INFO 2874 --- [           main] net.devpage.blog.BlogApplication         : No active profile set, falling back to default profiles: default
+2017-09-29 00:28:21.654  INFO 2874 --- [           main] ationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@5b37e0d2: startup date [Fri Sep 29 00:28:21 PDT 2017]; root of context hierarchy
+2017-09-29 00:28:24.689  INFO 2874 --- [           main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat initialized with port(s): 7030 (http)
+2017-09-29 00:28:24.727  INFO 2874 --- [           main] o.apache.catalina.core.StandardService   : Starting service Tomcat
+2017-09-29 00:28:24.728  INFO 2874 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.5
+2017-09-29 00:28:25.417  INFO 2874 --- [ost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2017-09-29 00:28:25.417  INFO 2874 --- [ost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 3765 ms
+2017-09-29 00:28:25.644  INFO 2874 --- [ost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Mapping servlet: 'dispatcherServlet' to [/]
+2017-09-29 00:28:25.649  INFO 2874 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2017-09-29 00:28:25.649  INFO 2874 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2017-09-29 00:28:25.649  INFO 2874 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2017-09-29 00:28:25.649  INFO 2874 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2017-09-29 00:28:25.935  INFO 2874 --- [           main] org.mongodb.driver.cluster               : Cluster created with settings {hosts=[localhost:27017], mode=MULTIPLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
+2017-09-29 00:28:25.935  INFO 2874 --- [           main] org.mongodb.driver.cluster               : Adding discovered server localhost:27017 to client view of cluster
+2017-09-29 00:28:26.146  INFO 2874 --- [localhost:27017] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:1, serverValue:5}] to localhost:27017
+2017-09-29 00:28:26.148  INFO 2874 --- [localhost:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, state=CONNECTED, ok=true, version=ServerVersion{versionList=[3, 4, 9]}, minWireVersion=0, maxWireVersion=5, maxDocumentSize=16777216, roundTripTimeNanos=952975}
+2017-09-29 00:28:26.174  INFO 2874 --- [localhost:27017] org.mongodb.driver.cluster               : Discovered cluster type of STANDALONE
+2017-09-29 00:28:26.972  INFO 2874 --- [           main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@5b37e0d2: startup date [Fri Sep 29 00:28:21 PDT 2017]; root of context hierarchy
+2017-09-29 00:28:27.093  INFO 2874 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/archive/{archiveName}],methods=[GET]}" onto public java.util.List<net.devpage.blog.entity.BlogContent> net.devpage.blog.controller.BlogRestController.archive(java.lang.String)
+2017-09-29 00:28:27.093  INFO 2874 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/content/],methods=[POST]}" onto public net.devpage.blog.entity.BlogContent net.devpage.blog.controller.BlogRestController.insertContent(net.devpage.blog.entity.BlogContent)
+2017-09-29 00:28:27.093  INFO 2874 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/content/findLastWDate],methods=[GET]}" onto public java.util.List<net.devpage.blog.entity.BlogContent> net.devpage.blog.controller.BlogRestController.findLastWDate()
+2017-09-29 00:28:27.094  INFO 2874 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/redirect/{seq}],methods=[GET]}" onto public java.lang.String net.devpage.blog.controller.BlogRestController.redriectSeq(java.lang.String)
+2017-09-29 00:28:27.094  INFO 2874 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/]}" onto public java.lang.String net.devpage.blog.controller.BlogRestController.index(javax.servlet.http.HttpServletResponse)
+2017-09-29 00:28:27.094  INFO 2874 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/content/{seq}],methods=[GET]}" onto public java.util.List<net.devpage.blog.entity.BlogContent> net.devpage.blog.controller.BlogRestController.seq(int)
+2017-09-29 00:28:27.094  INFO 2874 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/customer/deleteAll]}" onto public void net.devpage.blog.controller.CustomerController.deleteAll()
+2017-09-29 00:28:27.094  INFO 2874 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/customer/findAll]}" onto public java.util.List<net.devpage.blog.entity.Customer> net.devpage.blog.controller.CustomerController.findAll()
+2017-09-29 00:28:27.095  INFO 2874 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/customer/findByFirstName]}" onto public net.devpage.blog.entity.Customer net.devpage.blog.controller.CustomerController.findByFirstName()
+2017-09-29 00:28:27.114  INFO 2874 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/customer/findByLastName]}" onto public java.util.List<net.devpage.blog.entity.Customer> net.devpage.blog.controller.CustomerController.findByLastName()
+2017-09-29 00:28:27.114  INFO 2874 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/customer/save]}" onto public void net.devpage.blog.controller.CustomerController.save()
+2017-09-29 00:28:27.116  INFO 2874 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-09-29 00:28:27.116  INFO 2874 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2017-09-29 00:28:27.164  INFO 2874 --- [           main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-09-29 00:28:27.164  INFO 2874 --- [           main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-09-29 00:28:27.228  INFO 2874 --- [           main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-09-29 00:28:27.495  INFO 2874 --- [           main] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2017-09-29 00:28:27.630  INFO 2874 --- [           main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat started on port(s): 7030 (http)
+2017-09-29 00:28:27.633  INFO 2874 --- [           main] net.devpage.blog.BlogApplication         : Started BlogApplication in 6.831 seconds (JVM running for 7.411)

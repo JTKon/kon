@@ -87,10 +87,10 @@
 		
 		
 		<!-- Project lombok -->
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-        </dependency>
+ 		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+		</dependency>
         
 		<!-- for jsp -->
 		<dependency>
@@ -109,6 +109,7 @@
 	</dependencies>
 
 	<build>
+		<finalName>blog.devpage.net</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
